@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+
+<body>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}  
+        <label for="name">Product name</label>
+        <input type="text" name="name" id="" value="{{ product.name }}" required>
+        <br><br>
+        <label for="name">Product image</label>
+        <input type="image" src="{{ product.image.url }}" alt="" style="height: 220px; width: 230px;">
+        <br><br>
+        <input type="file" name="img" id="" required>
+        <br><br>
+        <label for="name">Product price</label>
+        <input type="number" name="price" id="" min="0" value="{{ product.price }}">
+        <br><br>
+        <label for="name">Product discription</label>
+        <textarea type="text" name="discrip" id="">{{ product.discription }}</textarea>
+        <br><br>
+        <button type="submit">Update Product</button>
+    </form>
+</body>
+
+</html>

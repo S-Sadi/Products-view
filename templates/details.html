@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'styledetails.css' %}">
+  <title>Details</title>
+</head>
+<body>
+  <div class="container d-flex justify-content-center">
+    <figure class="card card-product-grid card-lg"> <a href="#" class="img-wrap" data-abc="true"> <img src="{{ product.image.url }}"> </a>
+        <figcaption class="info-wrap">
+            <div class="row">
+                <div class="col-md-9 col-xs-9">{{ product.name }}</div>
+                <div class="col-md-3 col-xs-3">
+                    <div class="rating text-right"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="rated">{{ product.discription }}</span> </div>
+                </div>
+            </div>
+        </figcaption>
+        <div class="bottom-wrap-payment">
+            <figcaption class="info-wrap">
+                <div class="row">
+                    <div class="col-md-9 col-xs-9">{{ product.price }} taka</div>
+                    
+                </div>
+            </figcaption>
+        </div>
+        {% if user.is_superuser %}
+        <div class="bottom-wrap"> <a href="{% url 'update' product.id %}" class="btn btn-primary float-right" data-abc="true"> Update </a>
+        </div>
+        <div class="bottom-wrap"> <a href="{% url 'delete' product.id %}" class="btn btn-primary float-right" data-abc="true"> Delete </a>
+        </div>
+        {% endif %}
+        <div class="price-wrap"> <a href="{% url 'index' %}" class="btn btn-warning float-left" data-abc="true"> Back </a> </div>
+    </figure>
+</div>
+  
+</body>
+</html>

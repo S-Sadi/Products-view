@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-100">
+
+
+
+
+        <div class="row">
+        <!----- for loop here ---------- -->
+            {% for product in products %}
+            <div class="col-md-4 col-sm-6">
+                <div class="card mb-30">
+                    <a class="card-img-tiles" href="#" data-abc="true">
+                        <div class="inner">
+                            <div class="main-img">
+                                <img src="{{ product.image.url }}" alt="Category" style="height: 100%; width: 100%;">
+                            </div>
+                        </div>
+                    </a>
+                    <div class="card-body text-center">
+                        <h4 class="card-title">{{ product.name }}</h4>
+                        <p class="text-muted">Price: {{ product.price }}</p>
+                        <a class="btn btn-outline-primary btn-sm" href="{% url 'details' product.id %}"
+                            data-abc="true">View Products</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</body>
+
+</html>
